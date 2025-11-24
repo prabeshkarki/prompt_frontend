@@ -16,26 +16,24 @@ export default function App() {
     }, [messages]);
 
     // Create session on load
-    useEffect(() => {
-        const createSession = async () => {
-            try {
-                const res = await fetch(`${API_URL}/create_session`, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify({}), // Required for some FastAPI setups
-                });
+    
+    const createSession = async () => {
+        try {
+            const res = await fetch(`${API_URL}/create_session`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({}), // Required for some FastAPI setups
+        });
 
-                const data = await res.json();
-                setSessionId(data.session_id);
-            } catch (error) {
-                console.log("Session error:", error);
-            }
-        };
-
-        createSession();
-    }, []);
+            const data = await res.json();
+            setSessionId(data.session_id);
+        } catch (error) {
+            console.log("Session error:", error);
+        }
+    };
+    
 
     const sendMessage = async () => {
         if (!input.trim()) return;
@@ -88,6 +86,15 @@ export default function App() {
     return (
         <div>
             <h3>Simple Chatbot</h3>
+            {/* Start Session Button */}
+            {!sessionId && (
+                <button
+                    onClick={createSession}
+                    style={{ padding: "5px 10px", marginBottom: "10px" }}
+                >
+                    Start Session
+                </button>
+            )}
 
             <div
                 ref={chatRef}
