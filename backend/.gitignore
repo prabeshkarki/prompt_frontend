@@ -1,2 +1,5 @@
 # Ignore environment file
 .env
+__pycache__/
+chatbot.log
+venv
