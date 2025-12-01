@@ -1,0 +1,398 @@
+2025-11-30 10:16:21,770 - INFO - Fetching products with limit=10
+2025-11-30 10:16:21,801 - INFO - Returned 3 products
+2025-11-30 10:20:58,316 - INFO - Adding product: Smartphone
+2025-11-30 10:20:58,340 - INFO - Products added with ID=4
+2025-11-30 10:21:46,792 - INFO - Adding product: Smartphone
+2025-11-30 10:21:46,821 - INFO - Products added with ID=5
+2025-11-30 10:23:29,049 - INFO - Creating chat session: 886ffb0d-cfcd-4bbb-9af9-0aada0c65b11
+2025-11-30 10:23:39,076 - INFO - Creating chat session: b083359e-0f44-41f6-a9d7-ca7cfed790c6
+2025-11-30 10:32:05,469 - INFO - Chat request for session_id=886ffb0d-cfcd-4bbb-9af9-0aada0c65b11
+2025-11-30 10:32:05,499 - INFO - User message saved for session 886ffb0d-cfcd-4bbb-9af9-0aada0c65b11
+2025-11-30 10:32:05,503 - INFO - Fetched 5 products for chat context
+2025-11-30 10:32:07,039 - INFO - AI response saved for session 886ffb0d-cfcd-4bbb-9af9-0aada0c65b11
+2025-11-30 10:33:52,988 - INFO - Fetching chat history for : 886ffb0d-cfcd-4bbb-9af9-0aada0c65b11
+2025-11-30 10:33:52,995 - INFO - Returned 2 chat messages
+2025-11-30 10:47:06,069 - INFO - Creating chat session: a8d57711-b052-4bf3-82cb-ebea68a1517e
+2025-11-30 10:50:12,789 - INFO - Creating chat session: 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:50:16,551 - INFO - Chat request for session_id=1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:50:16,558 - INFO - User message saved for session 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:50:16,560 - INFO - Conversation length: 1 messages
+2025-11-30 10:50:16,563 - INFO - Fetched 5 products for chat context
+2025-11-30 10:50:17,703 - INFO - AI response saved for session 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:50:32,044 - INFO - Chat request for session_id=1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:50:32,050 - INFO - User message saved for session 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:50:32,051 - INFO - Conversation length: 3 messages
+2025-11-30 10:50:32,053 - INFO - Fetched 5 products for chat context
+2025-11-30 10:50:33,192 - INFO - AI response saved for session 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:51:07,276 - INFO - Chat request for session_id=1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:51:07,281 - INFO - User message saved for session 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:51:07,283 - INFO - Conversation length: 5 messages
+2025-11-30 10:51:07,285 - INFO - Fetched 5 products for chat context
+2025-11-30 10:51:08,274 - INFO - AI response saved for session 1246a263-c54b-4c73-a0cb-3347925a54f6
+2025-11-30 10:58:43,484 - INFO - Creating chat session: aa4e2f87-6e4b-4c79-ad94-f9eab223c8a5
+2025-11-30 11:02:08,468 - INFO - Creating chat session: 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:30,452 - INFO - Chat request for session_id=3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:30,461 - INFO - User message saved for session 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:30,463 - INFO - Conversation length: 1 messages
+2025-11-30 11:02:30,466 - INFO - Fetched 5 products for chat context
+2025-11-30 11:02:31,484 - INFO - AI response saved for session 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:41,207 - INFO - Chat request for session_id=3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:41,212 - INFO - User message saved for session 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:41,215 - INFO - Conversation length: 3 messages
+2025-11-30 11:02:41,216 - INFO - Fetched 5 products for chat context
+2025-11-30 11:02:42,284 - INFO - AI response saved for session 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:55,244 - INFO - Chat request for session_id=3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:55,249 - INFO - User message saved for session 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:02:55,251 - INFO - Conversation length: 5 messages
+2025-11-30 11:02:55,253 - INFO - Fetched 5 products for chat context
+2025-11-30 11:02:55,946 - INFO - AI response saved for session 3956b151-42cb-482a-882e-ecce940a5d1f
+2025-11-30 11:42:38,281 - INFO - Creating chat session: e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:42:40,692 - INFO - Chat request for session_id=e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:42:40,714 - INFO - User message saved for session e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:42:40,717 - INFO - Conversation length: 2 messages
+2025-11-30 11:42:40,721 - INFO - Fetched 5 products for chat context
+2025-11-30 11:42:41,971 - INFO - AI response saved for session e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:42:59,412 - INFO - Chat request for session_id=e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:42:59,419 - INFO - User message saved for session e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:42:59,421 - INFO - Conversation length: 4 messages
+2025-11-30 11:42:59,422 - INFO - Fetched 5 products for chat context
+2025-11-30 11:43:00,342 - INFO - AI response saved for session e5db50c9-c460-4416-b9f5-e5dbfe2ceee2
+2025-11-30 11:44:29,039 - INFO - Creating chat session: 7e7fd0ac-e069-40d3-a6b6-d8469c6d3fee
+2025-11-30 11:44:33,891 - INFO - Chat request for session_id=7e7fd0ac-e069-40d3-a6b6-d8469c6d3fee
+2025-11-30 11:44:33,899 - INFO - User message saved for session 7e7fd0ac-e069-40d3-a6b6-d8469c6d3fee
+2025-11-30 11:44:33,902 - INFO - Conversation length: 2 messages
+2025-11-30 11:44:33,906 - INFO - Fetched 5 products for chat context
+2025-11-30 11:44:33,907 - ERROR - Gemini error: cannot access local variable 'prompt' where it is not associated with a value
+2025-11-30 11:44:57,676 - INFO - Creating chat session: e0add570-e490-46d7-8653-48dd8708411e
+2025-11-30 11:45:01,433 - INFO - Chat request for session_id=e0add570-e490-46d7-8653-48dd8708411e
+2025-11-30 11:45:01,442 - INFO - User message saved for session e0add570-e490-46d7-8653-48dd8708411e
+2025-11-30 11:45:01,446 - INFO - Conversation length: 2 messages
+2025-11-30 11:45:01,450 - INFO - Fetched 5 products for chat context
+2025-11-30 11:45:01,450 - ERROR - Gemini error: can only concatenate str (not "list") to str
+2025-11-30 11:47:28,740 - INFO - Creating chat session: de106792-adfb-4b2c-b523-b602296d520d
+2025-11-30 11:47:32,696 - INFO - Chat request for session_id=de106792-adfb-4b2c-b523-b602296d520d
+2025-11-30 11:47:32,703 - INFO - User message saved for session de106792-adfb-4b2c-b523-b602296d520d
+2025-11-30 11:47:32,706 - INFO - Conversation length: 2 messages
+2025-11-30 11:47:32,709 - INFO - Fetched 5 products for chat context
+2025-11-30 11:47:32,710 - ERROR - Gemini error: can only concatenate str (not "list") to str
+2025-11-30 11:49:41,838 - INFO - Creating chat session: 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:49:45,075 - INFO - Chat request for session_id=374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:49:45,083 - INFO - User message saved for session 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:49:45,086 - INFO - Fetched 5 products for chat context
+2025-11-30 11:49:46,478 - INFO - AI response saved for session 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:49:55,931 - INFO - Chat request for session_id=374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:49:55,937 - INFO - User message saved for session 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:49:55,939 - INFO - Fetched 5 products for chat context
+2025-11-30 11:49:56,794 - INFO - AI response saved for session 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:50:10,923 - INFO - Chat request for session_id=374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:50:10,929 - INFO - User message saved for session 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 11:50:10,931 - INFO - Fetched 5 products for chat context
+2025-11-30 11:50:11,850 - INFO - AI response saved for session 374d460e-308d-447d-9ef1-92cddf12bcf4
+2025-11-30 12:10:48,657 - INFO - Creating chat session: 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:10:51,464 - INFO - Chat request for session_id=3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:10:51,472 - INFO - User message saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:10:51,475 - INFO - Fetched 1 previous messages for context
+2025-11-30 12:10:51,478 - INFO - Fetched 5 products for chat context
+2025-11-30 12:10:52,693 - INFO - AI response saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:11:24,792 - INFO - Chat request for session_id=3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:11:24,798 - INFO - User message saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:11:24,800 - INFO - Fetched 3 previous messages for context
+2025-11-30 12:11:24,802 - INFO - Fetched 5 products for chat context
+2025-11-30 12:11:25,956 - INFO - AI response saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:11:50,915 - INFO - Chat request for session_id=3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:11:50,921 - INFO - User message saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:11:50,923 - INFO - Fetched 5 previous messages for context
+2025-11-30 12:11:50,925 - INFO - Fetched 5 products for chat context
+2025-11-30 12:11:52,427 - INFO - AI response saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:12:46,837 - INFO - Chat request for session_id=3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:12:46,843 - INFO - User message saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:12:46,845 - INFO - Fetched 7 previous messages for context
+2025-11-30 12:12:46,847 - INFO - Fetched 5 products for chat context
+2025-11-30 12:12:49,215 - INFO - AI response saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:13:48,817 - INFO - Chat request for session_id=3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:13:48,823 - INFO - User message saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:13:48,825 - INFO - Fetched 9 previous messages for context
+2025-11-30 12:13:48,826 - INFO - Fetched 5 products for chat context
+2025-11-30 12:13:52,339 - INFO - AI response saved for session 3c0a98bf-cb8e-4628-80de-d7df6c7280d5
+2025-11-30 12:18:32,933 - INFO - Creating chat session: 22cafe9c-de0a-4682-92a4-17cd40fe4a56
+2025-11-30 12:18:36,267 - INFO - Chat request for session_id=22cafe9c-de0a-4682-92a4-17cd40fe4a56
+2025-11-30 12:18:36,276 - INFO - User message saved for session 22cafe9c-de0a-4682-92a4-17cd40fe4a56
+2025-11-30 12:18:36,279 - INFO - Fetched 1 previous messages for context
+2025-11-30 12:18:36,283 - INFO - Fetched 5 products for chat context
+2025-11-30 12:18:37,581 - INFO - AI response saved for session 22cafe9c-de0a-4682-92a4-17cd40fe4a56
+2025-11-30 12:20:18,119 - INFO - Creating chat session: 60fc2e21-5398-4681-b284-5ce78634da85
+2025-11-30 12:20:20,592 - INFO - Chat request for session_id=60fc2e21-5398-4681-b284-5ce78634da85
+2025-11-30 12:20:20,600 - INFO - User message saved for session 60fc2e21-5398-4681-b284-5ce78634da85
+2025-11-30 12:20:20,602 - INFO - Fetched 1 previous messages for context
+2025-11-30 12:20:20,605 - INFO - Fetched 5 products for chat context
+2025-11-30 12:20:21,782 - INFO - AI response saved for session 60fc2e21-5398-4681-b284-5ce78634da85
+2025-11-30 12:25:47,420 - INFO - Creating chat session: 146b2bd7-b532-46c8-a72c-8d84773a5723
+2025-11-30 12:25:55,465 - INFO - Creating chat session: 1721122c-0db7-4b75-a75b-e9917d614561
+2025-11-30 12:26:02,264 - INFO - Chat request for session_id=1721122c-0db7-4b75-a75b-e9917d614561
+2025-11-30 12:26:02,273 - INFO - User message saved for session 1721122c-0db7-4b75-a75b-e9917d614561
+2025-11-30 12:26:02,276 - INFO - Fetched 1 previous messages for context
+2025-11-30 12:26:02,281 - INFO - Fetched 5 products for chat context
+2025-11-30 12:26:03,123 - INFO - AI response saved for session 1721122c-0db7-4b75-a75b-e9917d614561
+2025-11-30 12:34:44,762 - INFO - Fetching products with limit=10
+2025-11-30 12:34:44,766 - INFO - Returned 5 products
+2025-11-30 14:23:37,968 - INFO - Fetching products with limit=10
+2025-11-30 14:23:37,978 - INFO - Returned 5 products
+2025-11-30 14:24:51,670 - INFO - Adding product: smartphone
+2025-11-30 14:24:51,697 - INFO - Products added with ID=6
+2025-11-30 14:25:01,954 - INFO - Creating chat session: 3d964ed9-b4f2-4f5a-a658-8b4acf0168d8
+2025-11-30 14:25:27,947 - INFO - Chat request for session_id=3d964ed9-b4f2-4f5a-a658-8b4acf0168d8
+2025-11-30 14:25:27,956 - INFO - User message saved for session 3d964ed9-b4f2-4f5a-a658-8b4acf0168d8
+2025-11-30 14:25:27,960 - INFO - Fetched 1 previous messages for context
+2025-11-30 14:25:27,962 - INFO - Fetched 6 products for chat context
+2025-11-30 14:25:29,110 - INFO - AI response saved for session 3d964ed9-b4f2-4f5a-a658-8b4acf0168d8
+2025-11-30 14:25:38,185 - INFO - Fetching chat history for : 3d964ed9-b4f2-4f5a-a658-8b4acf0168d8
+2025-11-30 14:25:38,187 - INFO - Returned 2 chat messages
+2025-11-30 14:25:39,833 - INFO - Fetching chat history for : 3d964ed9-b4f2-4f5a-a658-8b4acf0168d8
+2025-11-30 14:25:39,836 - INFO - Returned 2 chat messages
+2025-11-30 14:48:02,522 - INFO - Creating chat session: b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:48:08,703 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:48:08,721 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:48:08,729 - INFO - Fetched 1 previous messages for context
+2025-11-30 14:48:08,738 - INFO - Fetched 6 products for chat context
+2025-11-30 14:48:10,395 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:48:29,215 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:48:29,227 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:48:29,232 - INFO - Fetched 3 previous messages for context
+2025-11-30 14:48:29,235 - INFO - Fetched 6 products for chat context
+2025-11-30 14:48:30,667 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:49:50,448 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:49:50,458 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:49:50,463 - INFO - Fetched 5 previous messages for context
+2025-11-30 14:49:50,467 - INFO - Fetched 6 products for chat context
+2025-11-30 14:49:51,787 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:50:12,525 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:50:12,537 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:50:12,541 - INFO - Fetched 7 previous messages for context
+2025-11-30 14:50:12,544 - INFO - Fetched 6 products for chat context
+2025-11-30 14:50:13,221 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:50:32,687 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:50:32,698 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:50:32,703 - INFO - Fetched 9 previous messages for context
+2025-11-30 14:50:32,706 - INFO - Fetched 6 products for chat context
+2025-11-30 14:50:34,362 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:51:10,489 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:51:10,501 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:51:10,507 - INFO - Fetched 11 previous messages for context
+2025-11-30 14:51:10,511 - INFO - Fetched 6 products for chat context
+2025-11-30 14:51:11,318 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:51:38,860 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:51:38,872 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:51:38,878 - INFO - Fetched 13 previous messages for context
+2025-11-30 14:51:38,882 - INFO - Fetched 6 products for chat context
+2025-11-30 14:51:40,222 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:03,912 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:03,925 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:03,931 - INFO - Fetched 15 previous messages for context
+2025-11-30 14:52:03,935 - INFO - Fetched 6 products for chat context
+2025-11-30 14:52:05,518 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:19,826 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:19,838 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:19,844 - INFO - Fetched 17 previous messages for context
+2025-11-30 14:52:19,847 - INFO - Fetched 6 products for chat context
+2025-11-30 14:52:20,963 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:36,650 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:36,659 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:52:36,665 - INFO - Fetched 19 previous messages for context
+2025-11-30 14:52:36,669 - INFO - Fetched 6 products for chat context
+2025-11-30 14:52:38,472 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:53:02,972 - INFO - Chat request for session_id=b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:53:02,984 - INFO - User message saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 14:53:02,990 - INFO - Fetched 21 previous messages for context
+2025-11-30 14:53:02,994 - INFO - Fetched 6 products for chat context
+2025-11-30 14:53:03,766 - INFO - AI response saved for session b45a1b5a-18d2-48f7-8c19-c0ea59d63b3d
+2025-11-30 15:43:47,709 - INFO - Creating chat session: 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:43:53,659 - INFO - Chat request for session_id=3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:43:53,679 - INFO - User message saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:43:53,687 - INFO - Fetched 1 previous messages for context
+2025-11-30 15:43:53,698 - INFO - Fetched 6 products for chat context
+2025-11-30 15:43:53,699 - ERROR - Gemini error: 'message'
+2025-11-30 15:51:05,173 - INFO - Chat request for session_id=3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:51:05,212 - INFO - User message saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:51:05,220 - INFO - Fetched 2 previous messages for context
+2025-11-30 15:51:05,229 - INFO - Fetched 6 products for chat context
+2025-11-30 15:51:06,779 - INFO - AI response saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:51:36,846 - INFO - Chat request for session_id=3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:51:36,857 - INFO - User message saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:51:36,861 - INFO - Fetched 4 previous messages for context
+2025-11-30 15:51:36,865 - INFO - Fetched 6 products for chat context
+2025-11-30 15:51:38,523 - INFO - AI response saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:52:35,724 - INFO - Chat request for session_id=3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:52:35,735 - INFO - User message saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:52:35,740 - INFO - Fetched 6 previous messages for context
+2025-11-30 15:52:35,744 - INFO - Fetched 6 products for chat context
+2025-11-30 15:52:36,465 - INFO - AI response saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:52:52,811 - INFO - Chat request for session_id=3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:52:52,820 - INFO - User message saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 15:52:52,825 - INFO - Fetched 8 previous messages for context
+2025-11-30 15:52:52,830 - INFO - Fetched 6 products for chat context
+2025-11-30 15:52:54,308 - INFO - AI response saved for session 3e0f26e8-8e23-4754-a6b4-25bc728b4ffa
+2025-11-30 16:40:00,980 - INFO - Updating product ID=1
+2025-11-30 16:40:01,007 - INFO - Product updated: ID=1
+2025-11-30 16:40:40,150 - INFO - Deleting product ID=1
+2025-11-30 16:40:40,159 - INFO - Product deleted: ID=1
+2025-11-30 16:49:46,499 - INFO - Creating chat session: 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:49:51,301 - INFO - Chat request for session_id=7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:49:51,310 - INFO - User message saved for session 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:49:51,313 - INFO - Fetched 1 previous messages for context
+2025-11-30 16:49:51,317 - INFO - Fetched 5 products for chat context
+2025-11-30 16:49:52,711 - INFO - AI response saved for session 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:50:30,883 - INFO - Chat request for session_id=7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:50:30,889 - INFO - User message saved for session 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:50:30,891 - INFO - Fetched 3 previous messages for context
+2025-11-30 16:50:30,892 - INFO - Fetched 5 products for chat context
+2025-11-30 16:50:31,709 - INFO - AI response saved for session 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:50:41,406 - INFO - Chat request for session_id=7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:50:41,413 - INFO - User message saved for session 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 16:50:41,414 - INFO - Fetched 5 previous messages for context
+2025-11-30 16:50:41,416 - INFO - Fetched 5 products for chat context
+2025-11-30 16:50:42,400 - INFO - AI response saved for session 7dcc75c2-5bb2-479b-85be-1fb1ec25ca0b
+2025-11-30 17:04:20,908 - INFO - Creating chat session: 7c1beeb0-1634-4dce-b99f-25809083b0ae
+2025-11-30 17:04:37,608 - INFO - Chat request for session_id=7c1beeb0-1634-4dce-b99f-25809083b0ae
+2025-11-30 17:04:37,621 - INFO - User message saved for session 7c1beeb0-1634-4dce-b99f-25809083b0ae
+2025-11-30 17:04:37,626 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:04:37,629 - INFO - Fetched 5 products for chat context
+2025-11-30 17:04:39,587 - INFO - AI response saved for session 7c1beeb0-1634-4dce-b99f-25809083b0ae
+2025-11-30 17:05:25,448 - INFO - Creating chat session: ca4dbf35-cf8e-428b-83f0-b5266cc069ae
+2025-11-30 17:05:29,616 - INFO - Chat request for session_id=ca4dbf35-cf8e-428b-83f0-b5266cc069ae
+2025-11-30 17:05:29,624 - INFO - User message saved for session ca4dbf35-cf8e-428b-83f0-b5266cc069ae
+2025-11-30 17:05:29,627 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:05:29,630 - INFO - Fetched 5 products for chat context
+2025-11-30 17:05:29,630 - ERROR - Gemini error: 'message'
+2025-11-30 17:05:40,419 - INFO - Creating chat session: 1ac80784-8e93-4c49-a823-7fb58c9f0531
+2025-11-30 17:05:43,850 - INFO - Chat request for session_id=1ac80784-8e93-4c49-a823-7fb58c9f0531
+2025-11-30 17:05:43,857 - INFO - User message saved for session 1ac80784-8e93-4c49-a823-7fb58c9f0531
+2025-11-30 17:05:43,860 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:05:43,864 - INFO - Fetched 5 products for chat context
+2025-11-30 17:05:45,089 - INFO - AI response saved for session 1ac80784-8e93-4c49-a823-7fb58c9f0531
+2025-11-30 17:06:18,877 - INFO - Creating chat session: f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:06:22,304 - INFO - Chat request for session_id=f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:06:22,313 - INFO - User message saved for session f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:06:22,317 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:06:22,321 - INFO - Fetched 5 products for chat context
+2025-11-30 17:06:23,817 - INFO - AI response saved for session f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:06:53,526 - INFO - Chat request for session_id=f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:06:53,531 - INFO - User message saved for session f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:06:53,532 - INFO - Fetched 3 previous messages for context
+2025-11-30 17:06:53,534 - INFO - Fetched 5 products for chat context
+2025-11-30 17:06:54,436 - INFO - AI response saved for session f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:07:00,490 - INFO - Chat request for session_id=f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:07:00,495 - INFO - User message saved for session f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:07:00,497 - INFO - Fetched 5 previous messages for context
+2025-11-30 17:07:00,499 - INFO - Fetched 5 products for chat context
+2025-11-30 17:07:01,851 - INFO - AI response saved for session f1e985b3-f3ba-4d03-b3a8-0e96b1ffeb77
+2025-11-30 17:10:11,290 - INFO - Creating chat session: 790b0f58-98eb-40c6-a0b1-f388b70b0168
+2025-11-30 17:10:14,966 - INFO - Chat request for session_id=790b0f58-98eb-40c6-a0b1-f388b70b0168
+2025-11-30 17:10:14,975 - INFO - User message saved for session 790b0f58-98eb-40c6-a0b1-f388b70b0168
+2025-11-30 17:10:14,978 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:10:14,980 - INFO - Fetched 5 products for chat context
+2025-11-30 17:10:16,358 - INFO - AI response saved for session 790b0f58-98eb-40c6-a0b1-f388b70b0168
+2025-11-30 17:10:42,273 - INFO - Creating chat session: b34d4a84-1572-47ef-a79a-4771a56e03cf
+2025-11-30 17:10:45,702 - INFO - Chat request for session_id=b34d4a84-1572-47ef-a79a-4771a56e03cf
+2025-11-30 17:10:45,710 - INFO - User message saved for session b34d4a84-1572-47ef-a79a-4771a56e03cf
+2025-11-30 17:10:45,714 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:10:45,719 - INFO - Fetched 5 products for chat context
+2025-11-30 17:10:46,525 - INFO - AI response saved for session b34d4a84-1572-47ef-a79a-4771a56e03cf
+2025-11-30 17:11:09,306 - INFO - Creating chat session: 93dc20a6-ee29-4806-953d-5e21ea1be2e9
+2025-11-30 17:11:12,636 - INFO - Chat request for session_id=93dc20a6-ee29-4806-953d-5e21ea1be2e9
+2025-11-30 17:11:12,644 - INFO - User message saved for session 93dc20a6-ee29-4806-953d-5e21ea1be2e9
+2025-11-30 17:11:12,647 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:11:12,652 - INFO - Fetched 5 products for chat context
+2025-11-30 17:11:14,094 - INFO - AI response saved for session 93dc20a6-ee29-4806-953d-5e21ea1be2e9
+2025-11-30 17:12:54,774 - INFO - Creating chat session: c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:12:58,328 - INFO - Chat request for session_id=c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:12:58,336 - INFO - User message saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:12:58,340 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:12:58,344 - INFO - Fetched 5 products for chat context
+2025-11-30 17:12:59,826 - INFO - AI response saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:13:08,294 - INFO - Chat request for session_id=c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:13:08,301 - INFO - User message saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:13:08,303 - INFO - Fetched 3 previous messages for context
+2025-11-30 17:13:08,305 - INFO - Fetched 5 products for chat context
+2025-11-30 17:13:09,243 - INFO - AI response saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:13:15,760 - INFO - Chat request for session_id=c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:13:15,765 - INFO - User message saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:13:15,767 - INFO - Fetched 5 previous messages for context
+2025-11-30 17:13:15,768 - INFO - Fetched 5 products for chat context
+2025-11-30 17:13:16,659 - INFO - AI response saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:14:04,139 - INFO - Chat request for session_id=c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:14:04,146 - INFO - User message saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:14:04,148 - INFO - Fetched 7 previous messages for context
+2025-11-30 17:14:04,150 - INFO - Fetched 5 products for chat context
+2025-11-30 17:14:05,351 - INFO - AI response saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:14:09,652 - INFO - Chat request for session_id=c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:14:09,658 - INFO - User message saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:14:09,660 - INFO - Fetched 9 previous messages for context
+2025-11-30 17:14:09,663 - INFO - Fetched 5 products for chat context
+2025-11-30 17:14:10,728 - INFO - AI response saved for session c0af4649-00ad-4fe4-8b05-a7eec77bbd7b
+2025-11-30 17:18:53,277 - INFO - Creating chat session: f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:12,479 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:12,483 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:12,485 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:19:12,486 - INFO - Fetched 5 products for chat context
+2025-11-30 17:19:13,830 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:36,200 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:36,205 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:36,207 - INFO - Fetched 3 previous messages for context
+2025-11-30 17:19:36,209 - INFO - Fetched 5 products for chat context
+2025-11-30 17:19:37,053 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:58,368 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:58,374 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:19:58,376 - INFO - Fetched 5 previous messages for context
+2025-11-30 17:19:58,377 - INFO - Fetched 5 products for chat context
+2025-11-30 17:19:59,791 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:17,839 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:17,845 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:17,847 - INFO - Fetched 7 previous messages for context
+2025-11-30 17:20:17,848 - INFO - Fetched 5 products for chat context
+2025-11-30 17:20:19,211 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:30,585 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:30,592 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:30,595 - INFO - Fetched 9 previous messages for context
+2025-11-30 17:20:30,596 - INFO - Fetched 5 products for chat context
+2025-11-30 17:20:31,797 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:53,412 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:53,418 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:20:53,420 - INFO - Fetched 11 previous messages for context
+2025-11-30 17:20:53,421 - INFO - Fetched 5 products for chat context
+2025-11-30 17:20:54,386 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:07,540 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:07,547 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:07,550 - INFO - Fetched 13 previous messages for context
+2025-11-30 17:21:07,551 - INFO - Fetched 5 products for chat context
+2025-11-30 17:21:08,351 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:29,999 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:30,005 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:30,007 - INFO - Fetched 15 previous messages for context
+2025-11-30 17:21:30,008 - INFO - Fetched 5 products for chat context
+2025-11-30 17:21:30,692 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:44,010 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:44,016 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:44,018 - INFO - Fetched 17 previous messages for context
+2025-11-30 17:21:44,019 - INFO - Fetched 5 products for chat context
+2025-11-30 17:21:44,981 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:48,951 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:48,958 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:48,960 - INFO - Fetched 19 previous messages for context
+2025-11-30 17:21:48,961 - INFO - Fetched 5 products for chat context
+2025-11-30 17:21:50,103 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:57,265 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:57,271 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:21:57,273 - INFO - Fetched 21 previous messages for context
+2025-11-30 17:21:57,275 - INFO - Fetched 5 products for chat context
+2025-11-30 17:21:58,552 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:22:06,175 - INFO - Chat request for session_id=f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:22:06,181 - INFO - User message saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:22:06,183 - INFO - Fetched 23 previous messages for context
+2025-11-30 17:22:06,185 - INFO - Fetched 5 products for chat context
+2025-11-30 17:22:06,928 - INFO - AI response saved for session f7842cce-e330-4835-aa8f-a9966e3037eb
+2025-11-30 17:24:59,593 - INFO - Creating chat session: 11fcd914-548f-4451-bb99-d4a091bc627d
+2025-11-30 17:25:31,437 - INFO - Chat request for session_id=11fcd914-548f-4451-bb99-d4a091bc627d
+2025-11-30 17:25:31,444 - INFO - User message saved for session 11fcd914-548f-4451-bb99-d4a091bc627d
+2025-11-30 17:25:31,446 - INFO - Fetched 1 previous messages for context
+2025-11-30 17:25:31,447 - INFO - Fetched 5 products for chat context
+2025-11-30 17:25:33,023 - INFO - AI response saved for session 11fcd914-548f-4451-bb99-d4a091bc627d

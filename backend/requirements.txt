@@ -1,0 +1,13 @@
+fastapi[all]
+uvicorn
+pymysql
+sqlalchemy
+mysql-connector-python
+python-dotenv
+requests
+aiohttp
+google-generativeai
+passlib[bcrypt]
+pylance
+cryptography
+python-jose
