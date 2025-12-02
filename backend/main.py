@@ -142,16 +142,29 @@ def chat(data: ChatRequest, db: Session = Depends(get_db)):
 
     # Fetch conversation history
     history = db.query(ChatHistory).filter(ChatHistory.session_id == data.session_id).order_by(ChatHistory.id.asc()).all()
-    # fromat conversation history for context 
+    # # fromat conversation history for context 
+    # conversation_context = []
+    # for msg in history:
+    #     role_value = getattr(msg, "role", None)
+    #     message_value = getattr(msg, "message", None)
+    
+    #     if not role_value or not message_value:
+    #        continue
+    # logger.info(f"Fetched {len(conversation_context)} previous messages for context")
     conversation_context = []
     for msg in history:
-        if not msg.role or not msg.message:
-            continue
-        conversation_context.append({
-            "role":msg.role,
-            "message":msg.message
-        })
+        role_value = getattr(msg, "role", None)
+        message_value = getattr(msg, "message", None)
+        
+        if role_value and message_value:
+            conversation_context.append({
+                "role": role_value,
+                "message": message_value
+            })
+        
     logger.info(f"Fetched {len(conversation_context)} previous messages for context")
+    logger.info(f"Total messages in history: {len(history)}")
+    logger.info(f"Conversation context built: {conversation_context}")
 
     # Fetch products
     products = db.query(Product).order_by(Product.id.asc()).limit(50).all()

@@ -1,28 +1,35 @@
 import uuid
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Float
-from sqlalchemy.orm import relationship
 from datetime import datetime
+from sqlalchemy import String, Text, DateTime, ForeignKey, Float, Integer
+from sqlalchemy.orm import relationship, Mapped, mapped_column
 from database import Base
 
-class Product(Base): 
-    __tablename__ = "products" 
-    id = Column(Integer, primary_key=True, index=True)
-    name = Column(String(255), nullable=False)
-    description = Column(Text)
-    price = Column(Float, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
+class Product(Base):
+    __tablename__ = "products"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+    description: Mapped[str] = mapped_column(Text)
+    price: Mapped[float] = mapped_column(Float, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+
 
 class ChatSession(Base):
     __tablename__ = "chat_sessions"
-    session_id = Column(String(64), primary_key=True, index=True)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    messages = relationship("ChatHistory", back_populates="session")
+
+    session_id: Mapped[str] = mapped_column(String(64), primary_key=True, index=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    messages: Mapped[list["ChatHistory"]] = relationship(
+        "ChatHistory", back_populates="session"
+    )
+
 
 class ChatHistory(Base):
     __tablename__ = "chat_history"
-    id = Column(String(64), primary_key=True, default=lambda: str(uuid.uuid4()))
-    session_id = Column(String(64), ForeignKey("chat_sessions.session_id"), nullable=False)
-    role = Column(String(20), nullable=False)
-    message = Column(Text, nullable=False)
-    created_at = Column(DateTime, default=datetime.utcnow)
-    session = relationship("ChatSession", back_populates="messages")
+
+    id: Mapped[str] = mapped_column(String(64), primary_key=True, default=lambda: str(uuid.uuid4()))
+    session_id: Mapped[str] = mapped_column(String(64), ForeignKey("chat_sessions.session_id"), nullable=False)
+    role: Mapped[str] = mapped_column(String(20), nullable=False)
+    message: Mapped[str] = mapped_column(Text, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow)
+    session: Mapped["ChatSession"] = relationship("ChatSession", back_populates="messages")
