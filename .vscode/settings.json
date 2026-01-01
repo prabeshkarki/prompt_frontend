@@ -16,5 +16,6 @@
             "username": "root",
             "database": "chatbotdb"
         }
-    ]
+    ],
+    "git.ignoreLimitWarning": true
 }

@@ -1,0 +1,4 @@
+/for modifying created_at to autogenerate time/
+ ALTER TABLE products
+    -> MODIFY created_at DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP;
+

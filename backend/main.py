@@ -1,207 +1,419 @@
-import uuid
-from datetime import datetime
-from fastapi import FastAPI, Depends, HTTPException, Query, Path
-from sqlalchemy.orm import Session
-from fastapi.middleware.cors import CORSMiddleware
+# from __future__ import annotations
 
-from database import Base, engine, SessionLocal
-from models import Product, ChatSession, ChatHistory
-from schemas import (
-    CreateSessionResponse, ChatRequest, ChatResponse,
-    ChatHistoryOut, ProductOut, ProductBase
-)
-from gemini_ai import gemini_product_answer
-from logger import logger
+# import uuid
+# from datetime import datetime
+# from typing import List
 
-app = FastAPI()
-Base.metadata.create_all(bind=engine)
+# from fastapi import Depends, FastAPI, HTTPException, Path, Query, status
+# from fastapi.middleware.cors import CORSMiddleware
+# from sqlalchemy.orm import Session
 
-# ---------------------------
-# Database Dependency
-# ---------------------------
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+# from database import Base, engine, get_db
+# from gemini_ai import gemini_product_answer
+# from logger import logger
+# from models import ChatHistory, ChatSession, Product, UserProductHistory
+# from schemas import (
+#     ChatHistoryOut,
+#     ChatRequest,
+#     ChatResponse,
+#     CreateSessionResponse,
+#     ProductBase,
+#     ProductOut,
+# )
 
-# ---------------------------
-# CORS
-# ---------------------------
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# app = FastAPI(title="Product Chatbot API")
 
-# ---------------------------
-# Product Endpoints
-# ---------------------------
-@app.get("/products", response_model=list[ProductOut])
-def list_products(
-    limit: int = Query(10, ge=1, le=500),
-    db: Session = Depends(get_db)
-):
-    logger.info(f"Fetching products with limit={limit}")
-    products = db.query(Product).limit(limit).all()
-    logger.info(f"Returned {len(products)} products")
-    return products
-
-@app.post("/products", response_model=ProductOut)
-def add_product(product: ProductBase, db: Session = Depends(get_db)):
-    logger.info(f"Adding product: {product.name}")
-
-    db_product = Product(
-        name=product.name.strip(),
-        description=(product.description or "").strip(),
-        price=product.price
-    )
-    db.add(db_product)
-    db.commit()
-    db.refresh(db_product)
-
-    logger.info(f"Products added with ID={db_product.id}")
-    return db_product
-
-@app.put("/products/{product_id}", response_model=ProductOut)
-def update_product(
-    product_id: int,
-    product: ProductBase,
-    db: Session = Depends(get_db)
-):
-    logger.info(f"Updating product ID={product_id}")
-
-    db_product = db.query(Product).filter(Product.id == product_id).first()
-    if not db_product:
-        logger.warning(f"Product not found: ID={product_id}")
-        raise HTTPException(status_code=404, detail="Product not found")
-
-    db_product.name = product.name.strip()
-    db_product.description = (product.description or "").strip()
-    db_product.price = product.price
-    db.commit()
-    db.refresh(db_product)
-
-    logger.info(f"Product updated: ID={product_id}")
-    return db_product
-
-@app.delete("/products/{product_id}")
-def delete_product(
-    product_id: int,
-    db: Session = Depends(get_db)
-):
-    logger.info(f"Deleting product ID={product_id}")
-
-    db_product = db.query(Product).filter(Product.id == product_id).first()
-    if not db_product:
-        logger.warning(f"Product not found: ID={product_id}")
-        raise HTTPException(status_code=404, detail="Product not found")
-
-    db.delete(db_product)
-    db.commit()
-
-    logger.info(f"Product deleted: ID={product_id}")
-    return {"message": f"Product ID {product_id} deleted successfully"}
+# # Simple dev-time table creation
+# Base.metadata.create_all(bind=engine)
 
 
-# ---------------------------
-# Chat Session
-# ---------------------------
-@app.post("/create_session", response_model=CreateSessionResponse)
-def create_session(db: Session = Depends(get_db)):
-    session_id = str(uuid.uuid4())
-    logger.info(f"Creating chat session: {session_id}")
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=["*"],
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
 
-    new_session = ChatSession(session_id=session_id, created_at=datetime.utcnow())
-    db.add(new_session)
-    db.commit()
-    db.refresh(new_session)
-    return CreateSessionResponse(session_id=session_id)
+# def user_product_history(
+#     db: Session,
+#     session_id: str,
+#     user_message: str,
+#     products: List
+# ) -> None:
+#     """
+#     Save product_id, session_id, and product_name into user_product_history
+#     if the user message indicates a purchase and matches a product name.
+#     """
+#     text = user_message.lower()
 
-# ---------------------------
-# Chat Endpoint
-# ---------------------------
-@app.post("/chat", response_model=ChatResponse)
-def chat(data: ChatRequest, db: Session = Depends(get_db)):
-    logger.info(f"Chat request for session_id={data.session_id}")
+#     # very simple intent check
+#     trigger_words = ("buy", "purchase", "order", "book")
+#     if not any(w in text for w in trigger_words):
+#         return
 
-    # Verify session exists
-    session = db.query(ChatSession).filter(ChatSession.session_id == data.session_id).first()
-    if not session:
-        logger.warning(f"Session not found: {data.session_id}")
-        raise HTTPException(status_code=404, detail="Session not found")
+#     # naive product matching: check if product name appears in the message
+#     matched_product: Product | None = None
+#     for p in products:
+#         if p.name.lower() in text:
+#             matched_product = p
+#             break
 
-    # Save user message
-    user_msg = ChatHistory(session_id=data.session_id, role="user", message=data.message.strip())
-    db.add(user_msg)
-    db.commit()
-    logger.info(f"User message saved for session {data.session_id}")
+#     if not matched_product:
+#         logger.info(
+#             "Purchase-like message but no product name matched: %s", user_message
+#         )
+#         return
 
-    # Fetch conversation history
-    history = db.query(ChatHistory).filter(ChatHistory.session_id == data.session_id).order_by(ChatHistory.id.asc()).all()
-    # # fromat conversation history for context 
-    # conversation_context = []
-    # for msg in history:
-    #     role_value = getattr(msg, "role", None)
-    #     message_value = getattr(msg, "message", None)
-    
-    #     if not role_value or not message_value:
-    #        continue
-    # logger.info(f"Fetched {len(conversation_context)} previous messages for context")
-    conversation_context = []
-    for msg in history:
-        role_value = getattr(msg, "role", None)
-        message_value = getattr(msg, "message", None)
-        
-        if role_value and message_value:
-            conversation_context.append({
-                "role": role_value,
-                "message": message_value
-            })
-        
-    logger.info(f"Fetched {len(conversation_context)} previous messages for context")
-    logger.info(f"Total messages in history: {len(history)}")
-    logger.info(f"Conversation context built: {conversation_context}")
+#     entry = UserProductHistory(
+#         session_id=session_id,
+#         product_id=matched_product.id,
+#         product_name=matched_product.name,
+#     )
+#     db.add(entry)
+#     db.commit()
+#     logger.info(
+#         "Saved user_product_history for session %s and product %s",
+#         session_id,
+#         matched_product.name,
+#     )
 
-    # Fetch products
-    products = db.query(Product).order_by(Product.id.asc()).limit(50).all()
-    logger.info(f"Fetched {len(products)} products for chat context")
+# def trim_chat_history(db: Session, session_id: str, max_messages: int = 20) -> None:
+#     """
+#     Keep only the latest `max_messages` messages for a given session_id.
+#     Delete older ones from the database.
+#     """
+#     messages = (
+#         db.query(ChatHistory)
+#         .filter(ChatHistory.session_id == session_id)
+#         .order_by(ChatHistory.created_at.desc())  # newest first
+#         .all()
+#     )
 
-    products_data = [{"name": p.name, "description": p.description or "", "price": p.price} for p in products]
+#     if len(messages) <= max_messages:
+#         return
 
-    # AI response
-    try:
-        ai_answer = gemini_product_answer(data.message, products_data, conversation_context)
-    except Exception as e:
-        logger.error(f"Gemini error: {str(e)}")
-        raise HTTPException(status_code=500, detail=str(e))
+#     # Messages after index `max_messages` are old and should be deleted
+#     to_delete = messages[max_messages:]
+#     for msg in to_delete:
+#         db.delete(msg)
+#     db.commit()
+#     logger.info(
+#         "Trimmed chat history for session %s: deleted %d old messages",
+#         session_id,
+#         len(to_delete),
+#     )
 
-    bot_msg = ChatHistory(session_id=data.session_id, role="assistant", message=ai_answer)
-    db.add(bot_msg)
-    db.commit()
-    logger.info(f"AI response saved for session {data.session_id}")
+# def trim_chat_sessions(db: Session, max_sessions: int = 20) -> None:
+#     """
+#     Keep only the latest `max_sessions` ChatSession rows (by created_at).
+#     Older sessions (and their histories, via cascade) will be deleted.
+#     """
+#     sessions = db.query(ChatSession).order_by(ChatSession.created_at.desc()).all()
 
-    return ChatResponse(session_id=data.session_id, user_message=data.message.strip(), bot_message=ai_answer)
+#     if len(sessions) <= max_sessions:
+#         return
 
-# ---------------------------
-# Chat History
-# ---------------------------
-@app.get("/history/{session_id}", response_model=list[ChatHistoryOut])
-def get_history(session_id: str = Path(...), db: Session = Depends(get_db)):
-    logger.info(f"Fetching chat history for : {session_id}")
-    # Validate UUID format
-    try:
-        uuid.UUID(session_id)
-    except ValueError:
-        logger.error(f"Invalid session_id format: {session_id}")
-        raise HTTPException(status_code=400, detail="Invalid session_id format")
+#     to_delete = sessions[max_sessions:]  # older sessions
+#     for s in to_delete:
+#         db.delete(s)
+#     db.commit()
+#     logger.info(
+#         "Trimmed chat sessions: deleted %d old sessions",
+#         len(to_delete),
+#     )
 
-    history = db.query(ChatHistory).filter(ChatHistory.session_id == session_id).order_by(ChatHistory.id.asc()).all()
-    if not history:
-        logger.warning(f"No chat history found for session {session_id}")
-        raise HTTPException(status_code=404, detail="No chat history found")
-    logger.info(f"Returned {len(history)} chat messages")
-    return history
+# @app.get("/products", response_model=List[ProductOut])
+# def list_products(
+#     limit: int = Query(10, ge=1, le=500),
+#     db: Session = Depends(get_db),
+# ) -> List[Product]:
+#     logger.info("Fetching products with limit=%s", limit)
+#     products = db.query(Product).limit(limit).all()
+#     logger.info("Returned %d products", len(products))
+#     return products
+
+
+# @app.post("/products", response_model=ProductOut, status_code=status.HTTP_201_CREATED)
+# def add_product(product: ProductBase, db: Session = Depends(get_db)) -> Product:
+#     logger.info("Adding product: %s", product.name)
+
+#     db_product = Product(
+#         name=product.name.strip(),
+#         # description=(product.description or "").strip(),
+#         category=(product.category or None),
+#         brand=(product.brand or None),
+#         screen=(product.screen or None),
+#         processor=(product.processor or None),
+#         ram=(product.ram or None),
+#         storage=(product.storage or None),
+#         camera=(product.camera or None),
+#         price=product.price,
+#     )
+#     db.add(db_product)
+#     db.commit()
+#     db.refresh(db_product)
+
+#     logger.info("Product added with ID=%s", db_product.id)
+#     return db_product
+
+
+# @app.put("/products/{product_id}", response_model=ProductOut)
+# def update_product(
+#     product_id: int,
+#     product: ProductBase,
+#     db: Session = Depends(get_db),
+# ) -> Product:
+#     logger.info("Updating product ID=%s", product_id)
+
+#     db_product = db.query(Product).filter(Product.id == product_id).first()
+#     if not db_product:
+#         logger.warning("Product not found: ID=%s", product_id)
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Product not found",
+#         )
+
+#     db_product.name = product.name.strip()
+#     # db_product.description = (product.description or "").strip()
+#     db_product.category = (product.category or None)
+#     db_product.brand = (product.brand or None)
+#     db_product.screen = (product.screen or None)
+#     db_product.processor = (product.processor or None)
+#     db_product.ram = (product.ram or None)
+#     db_product.storage = (product.storage or None)
+#     db_product.camera = (product.camera or None)
+#     db_product.price = product.price
+
+#     db.commit()
+#     db.refresh(db_product)
+
+#     logger.info("Product updated: ID=%s", product_id)
+#     return db_product
+
+
+# @app.delete("/products/{product_id}", status_code=status.HTTP_200_OK)
+# def delete_product(
+#     product_id: int,
+#     db: Session = Depends(get_db),
+# ) -> dict:
+#     logger.info("Deleting product ID=%s", product_id)
+
+#     db_product = db.query(Product).filter(Product.id == product_id).first()
+#     if not db_product:
+#         logger.warning("Product not found: ID=%s", product_id)
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Product not found",
+#         )
+
+#     db.delete(db_product)
+#     db.commit()
+
+#     logger.info("Product deleted: ID=%s", product_id)
+#     return {"message": f"Product ID {product_id} deleted successfully"}
+
+
+# @app.post(
+#     "/create_session",
+#     response_model=CreateSessionResponse,
+#     status_code=status.HTTP_201_CREATED,
+# )
+# def create_session(db: Session = Depends(get_db)) -> CreateSessionResponse:
+#     """Create a new chat session and return its UUID."""
+#     session_id = str(uuid.uuid4())
+#     logger.info("Creating chat session: %s", session_id)
+
+#     new_session = ChatSession(session_id=session_id, created_at=datetime.utcnow())
+#     db.add(new_session)
+#     db.commit()
+#     db.refresh(new_session)
+
+#     return CreateSessionResponse(session_id=session_id)
+
+
+# @app.post("/chat", response_model=ChatResponse)
+# def chat(data: ChatRequest, db: Session = Depends(get_db)) -> ChatResponse:
+#     logger.info("Chat request for session_id=%s", data.session_id)
+
+#     # Ensure the session exists
+#     session = (
+#         db.query(ChatSession)
+#         .filter(ChatSession.session_id == data.session_id)
+#         .first()
+#     )
+#     if not session:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Session not found",
+#         )
+
+#     user_message = data.message.strip()
+#     if not user_message:
+#         raise HTTPException(
+#             status_code=status.HTTP_400_BAD_REQUEST,
+#             detail="Message cannot be empty",
+#         )
+
+#     # Store user message
+#     user_entry = ChatHistory(
+#         session_id=data.session_id,
+#         role="user",
+#         message=user_message,
+#         created_at=datetime.utcnow(),
+#     )
+#     db.add(user_entry)
+#     db.commit()
+
+#     # Fetch conversation history ordered by time
+#     history = (
+#         db.query(ChatHistory)
+#         .filter(ChatHistory.session_id == data.session_id)
+#         .order_by(ChatHistory.created_at.asc())
+#         .all()
+#     )
+
+#     # Convert to simple role/content format for Gemini helper
+#     conversation_context: list[dict[str, str]] = [
+#         {"role": msg.role, "content": msg.message} for msg in history
+#     ]
+
+#     # Keep only the last N messages to avoid huge prompts
+#     max_messages = 12
+#     if len(conversation_context) > max_messages:
+#         conversation_context = conversation_context[-max_messages:]
+
+#     # Load a subset of products for context
+#     products = db.query(Product).limit(300).all()
+#     products_data = [
+#         {
+#             "name": p.name,
+#             "category": p.category,
+#             "brand": p.brand,
+#             "screen": p.screen,
+#             "processor": p.processor,
+#             "ram": p.ram,
+#             "storage": p.storage,
+#             "camera": p.camera,
+#             "price": p.price,
+#         }
+#         for p in products
+#     ]
+
+#     # Call Gemini
+#     try:
+#         ai_answer = gemini_product_answer(
+#             prompt=user_message,
+#             products=products_data,
+#             conversation_history=conversation_context,
+#         )
+#     except Exception as exc:
+#         logger.exception("Gemini error during chat.")
+#         raise HTTPException(
+#             status_code=status.HTTP_502_BAD_GATEWAY,
+#             detail="Failed to generate AI response.",
+#         ) from exc
+
+#     # Store assistant reply
+#     bot_entry = ChatHistory(
+#         session_id=data.session_id,
+#         role="assistant",
+#         message=ai_answer,
+#         created_at=datetime.utcnow(),
+#     )
+#     db.add(bot_entry)
+#     db.commit()
+
+#     trim_chat_history(db, data.session_id, max_messages=20)
+#     trim_chat_sessions(db, max_sessions=50)
+
+#     return ChatResponse(
+#         session_id=data.session_id,
+#         user_message=user_message,
+#         bot_message=ai_answer,
+#     )
+
+# @app.get("/history/{session_id}", response_model=List[ChatHistoryOut])
+# def get_history(
+#     session_id: str = Path(..., description="Chat session UUID"),
+#     db: Session = Depends(get_db),
+# ) -> List[ChatHistoryOut]:
+#     logger.info("Fetching chat history for session %s", session_id)
+
+#     # Validate UUID format
+#     try:
+#         uuid.UUID(session_id)
+#     except ValueError:
+#         logger.error("Invalid session_id format: %s", session_id)
+#         raise HTTPException(
+#             status_code=status.HTTP_400_BAD_REQUEST,
+#             detail="Invalid session_id format",
+#         )
+
+#     # Ensure session exists
+#     session = (
+#         db.query(ChatSession)
+#         .filter(ChatSession.session_id == session_id)
+#         .first()
+#     )
+#     if not session:
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="Session not found",
+#         )
+
+#     history = (
+#         db.query(ChatHistory)
+#         .filter(ChatHistory.session_id == session_id)
+#         .order_by(ChatHistory.created_at.asc())
+#         .all()
+#     )
+
+#     if not history:
+#         logger.warning("No chat history found for session %s", session_id)
+#         raise HTTPException(
+#             status_code=status.HTTP_404_NOT_FOUND,
+#             detail="No chat history found",
+#         )
+
+#     logger.info("Returned %d chat messages", len(history))
+#     return [ChatHistoryOut.from_orm(msg) for msg in history]
+
+
+# # @app.delete("/session/{session_id}", status_code=status.HTTP_200_OK)
+# # def delete_session(
+# #     session_id: str = Path(..., description="Chat session UUID"),
+# #     db: Session = Depends(get_db),
+# # ) -> dict:
+# #     logger.info("Deleting chat session %s", session_id)
+
+# #     # Validate UUID format
+# #     try:
+# #         uuid.UUID(session_id)
+# #     except ValueError:
+# #         logger.error("Invalid session_id format: %s", session_id)
+# #         raise HTTPException(
+# #             status_code=status.HTTP_400_BAD_REQUEST,
+# #             detail="Invalid session_id format",
+# #         )
+
+# #     # Find session
+# #     session = (
+# #         db.query(ChatSession)
+# #         .filter(ChatSession.session_id == session_id)
+# #         .first()
+# #     )
+# #     if not session:
+# #         logger.warning("Session not found: %s", session_id)
+# #         raise HTTPException(
+# #             status_code=status.HTTP_404_NOT_FOUND,
+# #             detail="Session not found",
+# #         )
+
+# #     # Deleting ChatSession will also delete ChatHistory because of cascade
+# #     db.delete(session)
+# #     db.commit()
+
+# #     logger.info("Session deleted: %s", session_id)
+# #     return {"message": f"Session {session_id} deleted successfully"}
+

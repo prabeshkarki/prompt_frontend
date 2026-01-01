@@ -1,26 +1,25 @@
-import logging
-from logging.handlers import RotatingFileHandler
+# import logging
+# from logging.handlers import RotatingFileHandler
 
-# Create logger
-logger = logging.getLogger("chatbot_logger")
-logger.setLevel(logging.INFO)
+# # Single shared logger for the app
+# logger = logging.getLogger("chatbot")
 
-# Log format
-formatter = logging.Formatter(
-    "%(asctime)s - %(levelname)s - %(message)s"
-)
+# if not logger.handlers:  # avoid duplicate handlers on reload
+#     logger.setLevel(logging.INFO)
 
-# Console handler
-console_handler = logging.StreamHandler()
-console_handler.setFormatter(formatter)
-logger.addHandler(console_handler)
+#     formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
 
-# File handler (5 MB per file, max 3 backups)
-file_handler = RotatingFileHandler(
-    "chatbot.log", 
-    maxBytes=5*1024*1024,
-    backupCount=3
-)
-file_handler.setFormatter(formatter)
-logger.addHandler(file_handler)
+#     # Log to console
+#     console_handler = logging.StreamHandler()
+#     console_handler.setFormatter(formatter)
+#     logger.addHandler(console_handler)
 
+#     # Log to rotating file (5 MB x 3 backups)
+#     file_handler = RotatingFileHandler(
+#         "chatbot.log",
+#         maxBytes=5 * 1024 * 1024,
+#         backupCount=3,
+#         encoding="utf-8",
+#     )
+#     file_handler.setFormatter(formatter)
+#     logger.addHandler(file_handler)

@@ -1,35 +1,68 @@
-import os
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
-from dotenv import load_dotenv
+# import os
+# from typing import Generator
 
-load_dotenv()
+# from dotenv import load_dotenv
+# from sqlalchemy import create_engine
+# from sqlalchemy.orm import Session, declarative_base, sessionmaker
 
-MYSQL_USER = os.getenv("MYSQL_USER")
-MYSQL_PASS = os.getenv("MYSQL_PASS")
-MYSQL_DB = os.getenv("MYSQL_DB")
-MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
-MYSQL_PORT = os.getenv("MYSQL_PORT", "3306")
+# # Load environment variables from .env
+# load_dotenv()
 
-if not all([MYSQL_USER, MYSQL_PASS, MYSQL_DB]):
-    raise EnvironmentError("MYSQL_USER, MYSQL_PASS, and MYSQL_DB must be set in .env")
+# # --------------------------------------------------------------------------- #
+# # Environment configuration
+# # --------------------------------------------------------------------------- #
 
-DATABASE_URL = f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASS}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}"
+# def _get_env_var(name: str, default: str | None = None) -> str:
+#     """Return environment variable or raise if not found and no default."""
+#     value = os.getenv(name, default)
+#     if value is None:
+#         raise EnvironmentError(f"{name} must be set in .env")
+#     return value
 
-engine = create_engine(
-    DATABASE_URL,
-    pool_pre_ping=True,
-    pool_recycle=3600,
-    pool_size=5,
-    max_overflow=10,
-    echo=False,
-    connect_args={
-        "connect_timeout": 30,
-        "read_timeout": 30,
-        "write_timeout": 30,
-        "charset": "utf8mb4"
-    }
-)
+# MYSQL_USER = _get_env_var("MYSQL_USER")
+# MYSQL_PASS = _get_env_var("MYSQL_PASS")
+# MYSQL_DB   = _get_env_var("MYSQL_DB")
+# MYSQL_HOST = os.getenv("MYSQL_HOST", "localhost")
+# MYSQL_PORT = os.getenv("MYSQL_PORT", "3306")
 
-SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-Base = declarative_base()
+# # Build DATABASE_URL if not explicitly set
+# DATABASE_URL = os.getenv("DATABASE_URL")
+# if not DATABASE_URL:
+#     DATABASE_URL = (
+#         f"mysql+pymysql://{MYSQL_USER}:{MYSQL_PASS}@{MYSQL_HOST}:{MYSQL_PORT}/{MYSQL_DB}"
+#     )
+
+# # Connection arguments for PyMySQL
+# connect_args: dict[str, str | int] = {
+#     "connect_timeout": 30,
+#     "charset": "utf8mb4",
+# }
+
+# # --------------------------------------------------------------------------- #
+# # SQLAlchemy engine and session
+# # --------------------------------------------------------------------------- #
+
+# engine = create_engine(
+#     DATABASE_URL,
+#     pool_pre_ping=True,
+#     pool_recycle=3600,
+#     pool_size=5,
+#     max_overflow=10,
+#     echo=True,  # set to False in production
+#     connect_args=connect_args,
+# )
+
+# SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
+# Base = declarative_base()
+
+# # --------------------------------------------------------------------------- #
+# # Dependency for FastAPI
+# # --------------------------------------------------------------------------- #
+
+# def get_db() -> Generator[Session, None, None]:
+#     """FastAPI dependency that provides a database session."""
+#     db = SessionLocal()
+#     try:
+#         yield db
+#     finally:
+#         db.close()
