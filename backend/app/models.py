@@ -1,13 +1,31 @@
-# app/models/chat.py
 from __future__ import annotations
 
 import uuid
 from datetime import datetime
+from typing import Optional
 
-from sqlalchemy import DateTime, ForeignKey, Integer, String, Text
+from sqlalchemy import DateTime, Float, ForeignKey, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.db.base import Base
+from app.database import Base
+
+
+class Product(Base):
+    __tablename__ = "products"
+
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, index=True)
+    name: Mapped[str] = mapped_column(String(255), nullable=False)
+
+    category: Mapped[Optional[str]] = mapped_column(String(100), nullable=True, index=True)
+    brand: Mapped[Optional[str]] = mapped_column(String(100), nullable=True, index=True)
+    screen: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    processor: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    ram: Mapped[Optional[str]] = mapped_column(String(50), nullable=True)
+    storage: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+    camera: Mapped[Optional[str]] = mapped_column(String(100), nullable=True)
+
+    price: Mapped[float] = mapped_column(Float, nullable=False)
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
 
 
 class ChatSession(Base):
@@ -22,10 +40,14 @@ class ChatSession(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False)
 
     messages: Mapped[list["ChatHistory"]] = relationship(
-        "ChatHistory", back_populates="session", cascade="all, delete-orphan"
+        "ChatHistory",
+        back_populates="session",
+        cascade="all, delete-orphan",
     )
     product_history: Mapped[list["UserProductHistory"]] = relationship(
-        "UserProductHistory", back_populates="session", cascade="all, delete-orphan"
+        "UserProductHistory",
+        back_populates="session",
+        cascade="all, delete-orphan",
     )
 
 
@@ -47,7 +69,6 @@ class ChatHistory(Base):
 
 
 class UserProductHistory(Base):
-    """store products viewed or interacted by the user in a chat session"""
     __tablename__ = "user_product_history"
 
     id: Mapped[str] = mapped_column(String(64), primary_key=True, default=lambda: str(uuid.uuid4()))
@@ -64,5 +85,5 @@ class UserProductHistory(Base):
         index=True,
     )
     product_name: Mapped[str] = mapped_column(String(255), nullable=False)
-    created_at: Mapped[datetime] = mapped_column(DateTime, default=datetime.utcnow, nullable=False, index=True)
+
     session: Mapped["ChatSession"] = relationship("ChatSession", back_populates="product_history")

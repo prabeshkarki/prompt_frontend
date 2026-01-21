@@ -1,131 +1,11 @@
+# app/services/context_protocol.py
 from __future__ import annotations
 
-import os
-from typing import Any, Dict, List
-
-from google import genai
-client = genai.Client(api_key="AIzaSyC9x7FJ6WpEXJCaY8R61yLrXoDDppQk0e0")
-from dotenv import load_dotenv
-
-from backend.app.logger import logger
-
-load_dotenv()
-
-GENAI_API_KEY = (
-    os.getenv("GEMINI_API_KEY")
-    or os.getenv("GOOGLE_API_KEY")
-    or os.getenv("GENAI_API_KEY")
-)
-
-_genai_configured: bool = False
-_model: Any = None  # cached GenerativeModel instance
+from dataclasses import dataclass
+from typing import Any
 
 
-if GENAI_API_KEY:
-    try:
-        _genai_configured = True
-    except Exception:
-        logger.exception("Failed to configure google.generativeai SDK.")
-else:
-    logger.warning(
-        "No Gemini API key found (GEMINI_API_KEY / GOOGLE_API_KEY / GENAI_API_KEY). "
-        "AI responses will fail until a key is provided."
-    )
-
-
-def _get_model() -> Any:
-    """
-    Lazily create and cache the GenerativeModel instance.
-
-    Requires:
-      - google-generativeai installed
-      - GENAI_API_KEY (or GOOGLE_API_KEY / GEMINI_API_KEY) set
-    """
-    if not _genai_configured:
-        raise RuntimeError(
-            "Gemini SDK not configured. "
-            "Set GEMINI_API_KEY / GOOGLE_API_KEY in your .env."
-        )
-    global _model
-    if _model is None:
-        model_name = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
-        _model = model_name
-        logger.info(f"Initialized Gemini model: {model_name}")
-
-    return _model
-
-
-# ---------------------------------------------------------------------------
-# Helper functions
-# ---------------------------------------------------------------------------
-
-def _safe_product_text(products: List[Dict[str, Any]], max_chars: int = 3000) -> str:
-    blocks: List[str] = []
-
-    for p in products:
-        name = str(p.get("name", ""))[:200]
-        category = p.get("category", "")
-        brand = p.get("brand", "")
-        screen = p.get("display", "")
-        processor = p.get("chipset", "")
-        ram = p.get("ram", "")
-        storage = p.get("storage", "")
-        camera = p.get("camera", "")
-        price = p.get("price")
-
-        product_lines = []
-
-        # Title line
-        title = f"• {name}"
-        if category:
-            title += f" ({category})"
-        product_lines.append(title)
-
-        # Point-wise specs
-        if brand:
-            product_lines.append(f"  - Brand: {brand}")
-        if screen:
-            product_lines.append(f"  - Display: {screen}")
-        if processor:
-            product_lines.append(f"  - Chipset: {processor}")
-        if ram:
-            product_lines.append(f"  - RAM: {ram}")
-        if storage:
-            product_lines.append(f"  - Storage: {storage}")
-        if camera:
-            product_lines.append(f"  - Camera: {camera}")
-        if price is not None:
-            product_lines.append(f"  - Price: Rs {price}")
-
-        blocks.append("\n".join(product_lines))
-
-    text = "\n\n".join(blocks)
-
-    if len(text) > max_chars:
-        text = text[: max_chars - 10000] + "\n... (truncated)"
-
-    return text
-
-
-
-
-def _format_conversation_history(conversation_history: List[Dict[str, str]]) -> str:
-    """
-    Format chat history into plain text for context.
-
-    Expects each item: {"role": "user"|"assistant", "content": "<message>"}.
-    """
-    if not conversation_history:
-        return "No previous conversation."
-
-    lines: List[str] = ["PREVIOUS CONVERSATION:"]
-    for msg in conversation_history:
-        role = msg.get("role", "user").upper()
-        content = msg.get("content", "")
-        lines.append(f"{role}: {content}")
-    return "\n".join(lines)
-
-SYSTEM_INSTRUCTION = """You are a friendly and knowledgeable product advisor helping customers find exactly what they need. Think of yourself as that helpful salesperson in a store who genuinely cares about getting people the right product, not just making a sale.
+SYSTEM_PROMPT = """You are a friendly and knowledgeable product advisor helping customers find exactly what they need. Think of yourself as that helpful salesperson in a store who genuinely cares about getting people the right product, not just making a sale.
 
 YOUR PERSONALITY
 
@@ -359,65 +239,49 @@ That is what makes you excellent at this job.
 """
 
 
-def _extract_text(response: Any) -> str:
-    """
-    Best-effort extraction of text from different Gemini response shapes.
-    Handles both newer and older google-generativeai response structures.
-    """
-    text = getattr(response, "text", None)
-    if isinstance(text, str) and text.strip():
-        return text.strip()
-
-    candidates = getattr(response, "candidates", None)
-    if candidates:
-        cand = candidates[0]
-        cand_text = getattr(cand, "text", None)
-        if isinstance(cand_text, str) and cand_text.strip():
-            return cand_text.strip()
-
-        content = getattr(cand, "content", None)
-        if content is not None:
-            parts = getattr(content, "parts", None) or getattr(content, "_parts", None)
-            if parts and hasattr(parts[0], "text"):
-                return parts[0].text.strip()
-
-    return str(response)
+@dataclass(frozen=True)
+class ModelContext:
+    session_id: str
+    user_message: str
+    conversation_summary: str
+    confidence: float
+    retrieved_products: list[dict[str, Any]]  # must include id
+    retrieval_scores: list[float]
 
 
-# ---------------------------------------------------------------------------
-# Public function used by your FastAPI /chat endpoint
-# ---------------------------------------------------------------------------
+def render_prompt(ctx: ModelContext) -> str:
+    product_lines: list[str] = []
+    for p in ctx.retrieved_products:
+        product_lines.append(
+            " | ".join(
+                [
+                    f"id={p.get('id')}",
+                    f"name={p.get('name','')}",
+                    f"price_rs={p.get('price','')}",
+                    f"category={p.get('category','')}",
+                    f"brand={p.get('brand','')}",
+                    f"screen={p.get('screen','')}",
+                    f"processor={p.get('processor','')}",
+                    f"ram={p.get('ram','')}",
+                    f"storage={p.get('storage','')}",
+                    f"camera={p.get('camera','')}",
+                ]
+            )
+        )
 
-def gemini_product_answer(
-    prompt: str,
-    products: List[Dict[str, Any]],
-    conversation_history: List[Dict[str, str]],
-) -> str:
-    """
-    Generate a product-focused answer using Gemini.
-    """
-    if not prompt:
-        return "I didn't receive any question."
+    products_block = "\n".join(product_lines) if product_lines else "none"
 
-    if len(prompt) > 2000:
-        prompt = prompt[:1987] + " … (truncated)"
+    return f"""{SYSTEM_PROMPT}
 
-    product_text = _safe_product_text(products)
-    history_text = _format_conversation_history(conversation_history)
+session_id: {ctx.session_id}
+confidence: {ctx.confidence:.2f}
 
-    context = f"""
-{SYSTEM_INSTRUCTION}
+conversation_summary:
+{ctx.conversation_summary}
 
-{history_text}
+user_message:
+{ctx.user_message}
 
-USER QUESTION:
-{prompt}
-
-AVAILABLE PRODUCTS:
-{product_text}
-""".strip()
-
-    model = _get_model()
-    response = model.generate_content(context)
-
-    return _extract_text(response)
+PRODUCTS:
+{products_block}
+"""

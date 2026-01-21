@@ -6,8 +6,9 @@ mysql-connector-python
 python-dotenv
 requests
 aiohttp
-google-generativeai
 passlib[bcrypt]
 pylance
 cryptography
 python-jose
+qdrant-client
+google-genai
